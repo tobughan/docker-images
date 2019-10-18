@@ -1,8 +1,8 @@
 FROM centos:7
-ENV JAVA_VERSION 8u211
-ENV JDK_VERSION 1.8.0_211
-ENV JAVA_HOME /opt/jdk$JDK_VERSION
-ADD https://jdy-public-downloads.oss-cn-zhangjiakou.aliyuncs.com/jdk-8u211-linux-x64.tar.gz /usr/src/
+ENV JAVA_VERSION=8u211 \
+    JDK_VERSION=1.8.0_211
+ENV JAVA_HOME=/opt/jdk$JDK_VERSION
+ADD https://jdy-public-downloads.oss-cn-zhangjiakou.aliyuncs.com/jdk/jdk-$JAVA_VERSION-linux-x64.tar.gz /usr/src/
 RUN tar -xvf /usr/src/jdk-$JAVA_VERSION-linux-x64.tar.gz -C /opt && \
     rm -f /usr/src/jdk-$JAVA_VERSION-linux-x64.tar.gz && \
     ln -s /opt/jdk$JDK_VERSION/bin/java /usr/bin/java && \
