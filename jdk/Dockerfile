@@ -2,10 +2,10 @@ FROM centos:7
 ENV JAVA_VERSION="8u211" \
     JDK_VERSION="1.8.0_211"
 ENV JAVA_HOME=/opt/jdk${JDK_VERSION}
-COPY java/jdk-${JAVA_VERSION}-linux-x64.tar.gz /usr/src/jdk-${JAVA_VERSION}-linux-x64.tar.gz
+ADD https://jdy-public-downloads.oss-cn-zhangjiakou.aliyuncs.com/jdk-${JAVA_VERSION}-linux-x64.tar.gz /usr/src/
 RUN tar -xvf /usr/src/jdk-${JAVA_VERSION}-linux-x64.tar.gz -C /opt && \
     rm -f /usr/src/jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
-    ln -s /opt/jdk${JDK_VERSION}/bin/java /usr/local/bin/java && \
+    ln -s /opt/jdk${JDK_VERSION}/bin/java /usr/bin/java && \
     cd /opt/jdk${JDK_VERSION} && \
     find . -type f -name '*.html' -delete && \
     find . -type f -name '*.bat' -delete && \
