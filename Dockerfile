@@ -7,9 +7,7 @@ ENV JAVA_VERSION=8u201 \
     PATH=$PATH:/opt/jdk
 RUN set -ex && \
     echo http://mirrors.aliyun.com/alpine/v3.8/main >/etc/apk/repositories && \
-    echo http://mirrors.aliyun.com/alpine/v3.8/community >/etc/apk/repositories && \
-    apk -U upgrade && \
-    apk add --no-cache libstdc++ && \
+    echo http://mirrors.aliyun.com/alpine/v3.8/community >>/etc/apk/repositories && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION}; do wget ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -O /tmp/${pkg}.apk; done && \
     apk add --no-cache --allow-untrusted /tmp/*.apk && \
     rm -v /tmp/*.apk && \
