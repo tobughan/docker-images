@@ -13,8 +13,9 @@ RUN set -ex && \
     rm -v /tmp/*.apk && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
     apk del glibc-bin && \
+    mkdir -p /opt && \
     wget -O /opt/jdk-$JAVA_VERSION-linux-x64.tar.gz https://jdy-public-downloads.oss-cn-zhangjiakou.aliyuncs.com/jdk/jdk-$JAVA_VERSION-linux-x64.tar.gz && \
-    mkdir -p /opt && tar -xvf /opt/jdk-$JAVA_VERSION-linux-x64.tar.gz -C /opt && \
+    tar -xvf /opt/jdk-$JAVA_VERSION-linux-x64.tar.gz -C /opt && \
     rm -f /opt/jdk-$JAVA_VERSION-linux-x64.tar.gz && \
     ln -s /opt/jdk$JDK_VERSION $JAVA_HOME && \
     rm -vrf /opt/jdk/*src.zip \
