@@ -1,8 +1,8 @@
 FROM alpine:3.10
-ENV JAVA_VERSION=8u221 \
-    JDK_VERSION=1.8.0_221 \
+ENV JAVA_VERSION=8u231 \
+    JDK_VERSION=1.8.0_231 \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
-    GLIBC_VERSION=2.29-r0 \
+    GLIBC_VERSION=2.30-r0 \
     JAVA_HOME=/opt/jdk \
     PATH=$PATH:/opt/jdk/bin
 RUN set -ex && \
