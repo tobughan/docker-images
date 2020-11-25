@@ -4,7 +4,7 @@ ENV JAVA_VERSION=8u241 \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.30-r0 \
     JAVA_HOME=/opt/jdk \
-    PATH=$PATH:/opt/jdk/bin	
+    PATH=$PATH:/opt/jdk/bin
 RUN set -ex && \
     echo http://mirrors.aliyun.com/alpine/v3.11/main >/etc/apk/repositories && \
     echo http://mirrors.aliyun.com/alpine/v3.11/community >>/etc/apk/repositories && \
