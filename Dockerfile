@@ -4,16 +4,16 @@ ENV JAVA_VERSION=8u271 \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.32-r0 \
     JAVA_HOME=/opt/jdk \
-    PATH=$PATH:/opt/jdk/bin	
+    PATH=$PATH:/opt/jdk/bin \
+    LANG=C.UTF-8
 RUN set -ex && \
     echo http://mirrors.aliyun.com/alpine/v3.12/main >/etc/apk/repositories && \
     echo http://mirrors.aliyun.com/alpine/v3.12/community >>/etc/apk/repositories && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do wget ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -O /tmp/${pkg}.apk; done && \
     apk add --no-cache --allow-untrusted /tmp/*.apk && \
     rm -v /tmp/*.apk && \
-    /usr/glibc-compat/bin/localedef --force --inputfile en_US --charmap UTF-8 en_US.UTF-8 && \
+    /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
-    apk del glibc-bin && \
     mkdir -p /opt && \
     wget -O /opt/jdk-$JAVA_VERSION-linux-x64.tar.gz https://jdy-public-downloads.oss-cn-zhangjiakou.aliyuncs.com/jdk/jdk-$JAVA_VERSION-linux-x64.tar.gz && \
     tar -xvf /opt/jdk-$JAVA_VERSION-linux-x64.tar.gz -C /opt && \
