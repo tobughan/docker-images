@@ -11,8 +11,7 @@ RUN set -ex && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION}; do wget ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -O /tmp/${pkg}.apk; done && \
     apk add --no-cache --allow-untrusted /tmp/*.apk && \
     rm -v /tmp/*.apk && \
-    ( /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true ) && \
-    echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh && \
+    ( /usr/glibc-compat/bin/localedef --force --inputfile en_US --charmap UTF-8 en_US.UTF-8 || true ) && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
     apk del glibc-bin && \
     mkdir -p /opt && \
